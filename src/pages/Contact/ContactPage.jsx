@@ -11,7 +11,7 @@ export default function ContactPage() {
       <PathComponent prev={"Home"} path={pathname} />
       <div className="pt-20 px-2 grid grid-cols-1  lg:grid-cols-[minmax(0,340px),minmax(0,1000px)] gap-4">
         {/* First Column */}
-        <div className="w-full h-full pt-10 px-[2.188rem] pb-[50px] rounded shadow-sm bg-white">
+        <div className="w-full h-full pt-10 px-[2.188rem] pb-[50px] rounded shadow-md bg-white">
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-4">
               <img src="/images/icons/Contact/icons-phone.png" alt="phone" />
@@ -44,7 +44,7 @@ export default function ContactPage() {
           </div>
         </div>
         {/* Second Column */}
-        <div className="col-span-1 w-full h-full rounded shadow-sm bg-white py-10 px-8">
+        <div className="col-span-1 w-full h-full rounded shadow-md bg-white py-10 px-8">
           {/* Contact Form */}
           <form action="" className="space-y-4">
             <div className="flex flex-col lg:flex-row gap-4  mb-6">

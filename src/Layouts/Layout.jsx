@@ -10,7 +10,7 @@ const Layout = () => {
       <Header />
 
       {/* Main content */}
-      <main>
+      <main className='overflow-hidden'>
         <Outlet />
       </main>
 
