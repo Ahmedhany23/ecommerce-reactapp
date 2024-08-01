@@ -8,8 +8,8 @@ export default function FlashSalesSection() {
 
   return (
     <section className="pb-[80px] overflow-hidden">
-      <div className="container mx-auto relative">
-        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:gap-[87px] mb-10">
+      <div className="container mx-auto relative px-2 sm:px-0">
+        <div className="flex flex-col gap-5  lg:flex-row lg:items-end lg:gap-[87px] mb-10">
           <SubTitle sectionTitle={"Today's"} title={"Flash Sales"} />
           <CountdownTimer deadline={deadline} />
         </div>
