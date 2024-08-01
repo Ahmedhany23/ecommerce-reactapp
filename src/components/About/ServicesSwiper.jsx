@@ -54,18 +54,18 @@ export default function ServicesSwiper() {
             slidesPerView: 2,
           },
           1200: {
-            slidesPerView: 2
+            slidesPerView: 2,
           },
           1270: {
-            slidesPerView: 3
+            slidesPerView: 3,
           },
         }}
         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         observeParents={true}
         pagination={{
-          currentClass:"swiper-pagination",
+          currentClass: "swiper-pagination",
           bulletClass: `swiper-pagination-bullet`,
-          bulletActiveClass:`swiper-pagination-bullet-active`
+          bulletActiveClass: `swiper-pagination-bullet-active`,
         }}
         observer={true}
         parallax={true}
@@ -73,9 +73,6 @@ export default function ServicesSwiper() {
         loop={true}
         autoplay={true}
         grabCursor={true}
-       
-        
-      
         className="h-[600px] w-full max-w-[1170px] flex gap-52"
       >
         {data.map((item, index) => (
@@ -84,7 +81,7 @@ export default function ServicesSwiper() {
             className=" h-[564px]  rounded flex flex-col justify-center items-center"
           >
             <div className="mx-auto w-full md:w-[370px] h-[340px] flex items-center justify-center bg-secondary-1">
-              <img src={item.imgLink} alt={item.name} className="h-full"/>
+              <img src={item.imgLink} alt={item.name} className="h-full" />
             </div>
             <div className=" text-center xl:text-left  mt-8">
               <h4 className="font-medium font-inter text-[2rem] text-text-3 mb-2">
@@ -94,7 +91,7 @@ export default function ServicesSwiper() {
               <div className="flex gap-4 mt-4 items-center justify-center xl:justify-normal">
                 <img src="/images/icons/About/Icon-Twitter.png" alt="Twitter" />
                 <img
-                  src="/images/icons/About/icon-Instagram.png"
+                  src="/images/icons/About/icon-instagram.png"
                   alt="Instagram"
                 />
                 <img

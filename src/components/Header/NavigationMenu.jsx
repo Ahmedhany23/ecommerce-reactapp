@@ -66,6 +66,7 @@ export default function NavigationMenu({ isOpen, setIsOpen }) {
                 <NavLink
                   key={i} 
                   to={navlink.path}
+                  onClick={() => setIsOpen(false)} 
                   className={({ isActive }) =>
                     `text-text-1 text-3xl h-fit font-poppins font-normal hover:text-text-2 transition duration-200 ${
                       isActive ? "text-text-2" : ""

@@ -28,7 +28,7 @@ export default function AccountCartIcons({
               </div>
             )}
 
-            <img src="/images/icons/cart1.png" alt="cart" />
+            <img src="/images/icons/Cart1.png" alt="cart" />
           </button>
         </>
       )}
