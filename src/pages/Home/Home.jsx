@@ -1,9 +1,13 @@
+import AdvertisementBanner from "../../components/Advertisement/AdvertisementBanner";
+import FlashSalesSection from "../../components/FlashSales/FlashSalesSection";
+
 
 
 export default function HomePage() {
   return (
-    <main>
-       
-    </main>
-  )
+    <>
+      <AdvertisementBanner />
+      <FlashSalesSection />
+    </>
+  );
 }

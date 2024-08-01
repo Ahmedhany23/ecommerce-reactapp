@@ -35,7 +35,7 @@ const servicesCard = [
 export default function ServicesGrid() {
   return (
     /* Services-grid */
-    <section className="container mx-auto py-[140px] font-poppins grid grid-cols-1 lg:grid-cols-[repeat(2,minmax(270px,1fr))] xl:grid-cols-[repeat(3,minmax(270px,1fr))] 2xl:grid-cols-[repeat(4,minmax(270px,1fr))] gap-[30px]">
+    <section className="container mx-auto py-[140px] font-poppins grid grid-cols-1 lg:grid-cols-[repeat(2,minmax(270px,1fr))] xl:grid-cols-[repeat(4,minmax(270px,1fr))]  gap-[30px]">
       {/* Services-Cards */}
       {servicesCard.map((service, index) => (
         <div

@@ -1,5 +1,4 @@
-
-@import './assets/styles/colors.css';
+@import "./assets/styles/colors.css";
 
 /* 
     Tailwind Css
@@ -9,24 +8,81 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* 
     Global
 ------------------------ */
-@media (min-width:768px) {
-    .container {
-        max-width: none;
-        width: 95%;
-    }
+* {
+  @apply font-poppins;
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: none;
+    width: 95%;
+  }
 }
 
 @media (min-width: 1536px) {
-    .container {
-        max-width: 1400px;
-    }
+  .container {
+    max-width: 1400px;
+  }
 }
 
 .btn-1 {
-    @apply bg-button-2 py-4 px-12 text-text-1 text-base hover:bg-hoverButton-1
+  @apply bg-button-2 py-4 px-12 text-text-1 text-base hover:bg-hoverButton-1;
 }
 
+/* 
+   Countdown Timer
+------------------------ */
+.countdown-timer {
+  @apply flex items-center gap-[17px];
+}
+.countdown-item {
+  @apply flex flex-col-reverse items-start;
+}
+.countdown-number {
+  @apply font-inter font-bold text-[2rem] text-text-3;
+}
+.countdown-label {
+  @apply font-medium text-xs text-text-3;
+}
+
+.countdown-separator {
+  @apply text-hoverButton-1 text-4xl w-1 h-1 flex items-center;
+}
+
+/* 
+   Pagnation Swiper 
+------------------------ */
+.swiper-pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.swiper-pagination-bullet {
+  background-color: #7d8184!important;
+  border-radius: 50%;
+  width: 12px !important;
+  height: 12px !important;
+}
+
+.swiper-pagination-bullet-active {
+  position: relative !important;
+  z-index: 10;
+  width: 16px !important;
+  height: 16px !important;
+  background-color: rgba(0, 0, 0, 0.301) !important;
+}
+.swiper-pagination-bullet-active::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: #db4444;
+  border-radius: 50%;
+  border: 1.5px solid white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}

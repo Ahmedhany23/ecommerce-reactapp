@@ -1,9 +1,16 @@
+import React, { Suspense } from "react";
 import FullServices from "../../components/About/FullServices";
 import OurStory from "../../components/About/OurStory";
 import ServicesGrid from "../../components/About/ServicesGrid";
-import ServicesSwiper from "../../components/About/ServicesSwiper";
+
 import PathComponent from "../../components/utilites/path";
 import { useLocation } from "react-router";
+import Loading from "../../components/Loading/Loading";
+
+const ServicesSwiper = React.lazy(() =>
+  import("../../components/About/ServicesSwiper")
+);
+
 export default function AboutPage() {
   let location = useLocation();
   let path = location.pathname.slice(1);
@@ -15,12 +22,14 @@ export default function AboutPage() {
       {/* Our Story */}
       <OurStory />
       {/* ServiceGrid */}
-      <ServicesGrid/>
-       {/* ServicesSwiper */}
-       <ServicesSwiper/>
-       {/* FullServices */}
-       <FullServices/>
+      <ServicesGrid />
+      {/* ServicesSwiper */}
+      <Suspense fallback={<Loading />}>
+        <ServicesSwiper />
+      </Suspense>
 
+      {/* FullServices */}
+      <FullServices />
     </div>
   );
 }

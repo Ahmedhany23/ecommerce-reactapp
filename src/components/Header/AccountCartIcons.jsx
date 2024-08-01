@@ -1,17 +1,45 @@
-import React from "react";
+import { useState } from "react";
+import { FiUser } from "react-icons/fi";
 
-export default function AccountCartIcons() {
+export default function AccountCartIcons({
+  favoriteNumber = false,
+  cartNumber = false,
+  cartIcons,
+  user
+}) {
+  const [hover, setHover] = useState(false);
   return (
     <div className="flex items-center gap-4">
-      <button>
-        <img src="/images/icons/Wishlist.png" alt="heart" />
-      </button>
-      <button>
-        <img src="/images/icons/cart1.png" alt="heart" />
-      </button>
-      <button>
-        <img src="/images/icons/user.png" alt="heart" />
-      </button>
+      {cartIcons && (
+        <>
+          <button className="relative">
+            {favoriteNumber && (
+              <div className=" absolute -right-1 -top-1 w-4 h-4 text-xs flex items-center justify-center rounded-full bg-secondary-3 text-text-1 ">
+                {favoriteNumber}
+              </div>
+            )}
+
+            <img src="/images/icons/Wishlist.png" alt="heart" />
+          </button>
+          <button className="relative">
+            {cartNumber && (
+              <div className=" absolute -right-1 -top-1 w-4 h-4 text-xs flex items-center justify-center rounded-full bg-secondary-3  text-text-1 ">
+                {cartNumber}
+              </div>
+            )}
+
+            <img src="/images/icons/cart1.png" alt="cart" />
+          </button>
+        </>
+      )}
+      {user && <button
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        className="flex items-center justify-center font-thin text-3xl rounded-full text-text-3 hover:bg-secondary-3 hover:text-text-1 transition duration-200 "
+      >
+        <FiUser />
+      </button> }
+      
     </div>
   );
 }

@@ -1,22 +1,26 @@
-
-import { Outlet } from 'react-router-dom';
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
+import { Outlet } from "react-router-dom";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
+import { HeaderCustomizationProvider } from "../hooks/HeaderCustomization";
+import { Suspense } from "react";
+import Loading from "../components/Loading/Loading";
 
 const Layout = () => {
   return (
-    <div className="">
+    <HeaderCustomizationProvider>
       {/* Header */}
       <Header />
 
       {/* Main content */}
-      <main className='overflow-hidden'>
-        <Outlet />
+      <main className="overflow-hidden">
+        <Suspense fallback={<Loading />}>
+          <Outlet />
+        </Suspense>
       </main>
 
       {/* Footer */}
       <Footer />
-    </div>
+    </HeaderCustomizationProvider>
   );
 };
 

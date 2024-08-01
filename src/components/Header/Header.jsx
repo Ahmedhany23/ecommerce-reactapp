@@ -5,8 +5,11 @@ import SearchBar from "./SearchBar";
 import AccountCartIcons from "./AccountCartIcons";
 import { useState } from "react";
 import { FaGripLines } from "react-icons/fa";
+import { useHeaderCustomization } from '../../hooks/HeaderCustomization';
+
 
 export default function Header() {
+  const { cartIcons, user} = useHeaderCustomization();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -18,7 +21,7 @@ export default function Header() {
           <NavigationMenu isOpen={isOpen} setIsOpen={setIsOpen} />
           <div className="hidden md:flex items-center gap-6">
             <SearchBar />
-            <AccountCartIcons />
+            <AccountCartIcons cartIcons={cartIcons} user={user} />
           </div>
           <div className="block md:hidden text-4xl cursor-pointer">
             <FaGripLines onClick={() => setIsOpen(true)} />

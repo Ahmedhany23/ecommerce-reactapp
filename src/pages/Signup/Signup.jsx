@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
-
+import { useHeaderCustomization } from "../../hooks/HeaderCustomization";
+import { useEffect } from "react";
 export default function Signup() {
+  const { setCartIcon } = useHeaderCustomization();
+  useEffect(() => {
+    setCartIcon(false);
+
+    return () => setCartIcon(true);
+  }, [setCartIcon]);
   return (
     <div className=" container 2xl:mx-auto pt-[3.75rem] pb-[8.75rem] w-full">
       <div className="flex justify-center xl:justify-normal xl:gap-20 2xl:gap-[8.063rem]">
@@ -8,6 +15,7 @@ export default function Signup() {
           src="/images/Signup/image.webp"
           alt="Signup"
           className="hidden xl:block"
+          loading="eager"
         />
         <div className="flex justify-center items-center font-poppins">
           <div className="w-full sm:w-[371px] flex flex-col gap-12">

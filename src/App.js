@@ -1,27 +1,70 @@
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./Layouts/Layout";
-import HomePage from "./pages/Home/Home";
-import NotFoundPage from "./pages/NotFound/NotFoundPage";
-import Signup from "./pages/Signup/Signup";
-import Login from "./pages/Login/Login";
-import ContactPage from "./pages/Contact/ContactPage";
-import AboutPage from "./pages/About/AboutPage";
+import { SuspenseWithDelay } from "./hooks/useLoadingWithDelay";
+// Lazy load the components
+const HomePage = lazy(() => import("./pages/Home/Home"));
+const NotFoundPage = lazy(() => import("./pages/NotFound/NotFoundPage"));
+const Signup = lazy(() => import("./pages/Signup/Signup"));
+const Login = lazy(() => import("./pages/Login/Login"));
+const ContactPage = lazy(() => import("./pages/Contact/ContactPage"));
+const AboutPage = lazy(() => import("./pages/About/AboutPage"));
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/about" element={<AboutPage />} />
-
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route
+          index
+          element={
+            <SuspenseWithDelay delay={2000}>
+              <HomePage />
+            </SuspenseWithDelay>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <SuspenseWithDelay delay={2000}>
+              <ContactPage />
+            </SuspenseWithDelay>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <SuspenseWithDelay delay={2000}>
+              <AboutPage />
+            </SuspenseWithDelay>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <SuspenseWithDelay delay={2000}>
+              <Signup />
+            </SuspenseWithDelay>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <SuspenseWithDelay delay={2000}>
+              <Login />
+            </SuspenseWithDelay>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <SuspenseWithDelay delay={1000}>
+              <NotFoundPage />
+            </SuspenseWithDelay>
+          }
+        />
+      </Route>
+    </Routes>
+  </Router>
   );
 }
 
