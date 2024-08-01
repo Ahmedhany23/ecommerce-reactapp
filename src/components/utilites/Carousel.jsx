@@ -30,11 +30,11 @@ export default function Carousel({ Type = 1 }) {
         loop={true}
         autoplay={true}
         grabCursor={true}
-        className=" w-full max-w-[892px] lg:h-[344px] "
+        className=" w-full lg:max-w-[892px] lg:h-[344px] "
       >
         {[1, 2, 3, 4, 5, 6].map((item, index) => (
           <SwiperSlide key={index}>
-            <div className="bg-black w-full pl-16 flex gap-[38px] ">
+            <div className="bg-black w-full px-2 md:pl-16 flex sm:gap-[38px] ">
               <div>
                 {/* Title */}
                 <div className="flex items-center gap-6  pt-[58px]">
@@ -42,7 +42,7 @@ export default function Carousel({ Type = 1 }) {
                   <p className="text-text-1 mt-2">iPhone 14 Series</p>
                 </div>
                 {/* Para */}
-                <p className="mt-5 text-text-1 text-5xl max-w-[294px] font-inter font-semibold leading-[60px]">
+                <p className="mt-5 text-text-1 text-2xl lg:text-5xl max-w-[294px] font-inter font-semibold lg:leading-[60px]">
                   Up to 10% off Voucher
                 </p>
                 {/* Link */}
@@ -55,8 +55,8 @@ export default function Carousel({ Type = 1 }) {
                 </Link>
               </div>
               {/* Image */}
-              <div className="pt-4">
-                <img src="/images/iphone.png" alt="" />
+              <div className="w-[400px] sm:w-auto">
+                <img src="/images/iphone.png" alt="" className="  pt-20 sm:pt-10 md:pt-4" />
               </div>
             </div>
           </SwiperSlide>

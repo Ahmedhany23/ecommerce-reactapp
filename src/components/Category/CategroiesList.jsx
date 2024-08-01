@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 export default function CategroiesList() {
   return (
-    <div className="max-w-[217px] w-full">
+    <div className="max-w-[217px] w-full hidden xl:block">
       <ul className="flex flex-col gap-4">
         <li>
           <Link to='/categories/woman' className="flex justify-between items-center">

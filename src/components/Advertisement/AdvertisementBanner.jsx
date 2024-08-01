@@ -9,7 +9,8 @@ export default function AdvertisementBanner() {
         <CategroiesList />
         <Carousel/>
       </div>
-      <div className="divider absolute h-[384px] top-0 left-64 w-1  bg-black/302 border-l-[0.5px]"/>
+      {/* divider */}
+      <div className=" hidden xl:block absolute h-[384px] top-0 left-64 w-1  bg-black/302 border-l-[0.5px]"/>
     </section>
   );
 }
