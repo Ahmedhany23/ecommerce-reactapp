@@ -17,7 +17,7 @@ function App() {
         <Route
           index
           element={
-            <SuspenseWithDelay delay={2000}>
+            <SuspenseWithDelay delay={1000}>
               <HomePage />
             </SuspenseWithDelay>
           }
@@ -25,7 +25,7 @@ function App() {
         <Route
           path="/contact"
           element={
-            <SuspenseWithDelay delay={2000}>
+            <SuspenseWithDelay delay={1000}>
               <ContactPage />
             </SuspenseWithDelay>
           }
@@ -41,7 +41,7 @@ function App() {
         <Route
           path="/signup"
           element={
-            <SuspenseWithDelay delay={2000}>
+            <SuspenseWithDelay delay={1000}>
               <Signup />
             </SuspenseWithDelay>
           }
@@ -49,7 +49,7 @@ function App() {
         <Route
           path="/login"
           element={
-            <SuspenseWithDelay delay={2000}>
+            <SuspenseWithDelay delay={1000}>
               <Login />
             </SuspenseWithDelay>
           }

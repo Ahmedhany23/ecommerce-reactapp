@@ -10,8 +10,9 @@ import {
 } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import ProdcutCard from "../ProductCard/ProdcutCard";
-export default function Carousel({ Type = 1 }) {
+import ProdcutCard from "../Product/ProdcutCard";
+import CategroiesCard from "../Category/CategroiesCard";
+export default function Carousel({ Type = 1, CategorieImg, CategorieName }) {
   if (Type === 1) {
     return (
       <Swiper
@@ -56,7 +57,11 @@ export default function Carousel({ Type = 1 }) {
               </div>
               {/* Image */}
               <div className="w-[400px] sm:w-auto">
-                <img src="/images/iphone.png" alt="" className="  pt-20 sm:pt-10 md:pt-4" />
+                <img
+                  src="/images/iphone.png"
+                  alt=""
+                  className="  pt-20 sm:pt-10 md:pt-4"
+                />
               </div>
             </div>
           </SwiperSlide>
@@ -68,7 +73,7 @@ export default function Carousel({ Type = 1 }) {
     return (
       <>
         <div className="absolute top-10 right-0 flex gap-3">
-          <div className="swiper-button-prev  w-[46px] h-[46px] bg-secondary-1 rounded-full flex items-center justify-center">
+          <div className="swiper-button-prev2  w-[46px] h-[46px] bg-secondary-1 rounded-full flex items-center justify-center">
             <img
               src="/images/icons/Carousel/Arrow.png"
               alt=""
@@ -76,7 +81,7 @@ export default function Carousel({ Type = 1 }) {
             />
           </div>
 
-          <div className="swiper-button-next w-[46px] h-[46px] bg-secondary-1 rounded-full flex items-center justify-center">
+          <div className="swiper-button-next2 w-[46px] h-[46px] bg-secondary-1 rounded-full flex items-center justify-center">
             <img src="/images/icons/Carousel/Arrow.png" alt="" />
           </div>
         </div>
@@ -107,14 +112,75 @@ export default function Carousel({ Type = 1 }) {
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
           speed={200}
           navigation={{
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+            nextEl: ".swiper-button-next2",
+            prevEl: ".swiper-button-prev2",
           }}
           className="mx-auto mt-4"
         >
           {[1, 2, 3, 4, 5, 6].map((item, index) => (
             <SwiperSlide key={index}>
               <ProdcutCard />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </>
+    );
+  }
+  if (Type === 3) {
+    return (
+      <>
+        <div className="absolute top-24 right-0 flex gap-3 xl:hidden">
+          <div className="swiper-button-prev3  w-[46px] h-[46px] bg-secondary-1 rounded-full flex items-center justify-center">
+            <img
+              src="/images/icons/Carousel/Arrow.png"
+              alt="Arrow"
+              className=" -rotate-180"
+            />
+          </div>
+
+          <div className="swiper-button-next3  w-[46px] h-[46px] bg-secondary-1 rounded-full flex items-center justify-center">
+            <img src="/images/icons/Carousel/Arrow.png" alt="Arrow" />
+          </div>
+        </div>
+
+        <Swiper
+          spaceBetween={30}
+          breakpoints={{
+            slidesPerView: 1,
+
+            530: {
+              slidesPerView: 2,
+            },
+            580: {
+              slidesPerView: 3,
+            },
+            880: {
+              slidesPerView: 4,
+            },
+            1024: {
+              slidesPerView: 5,
+            },
+            1200: {
+              slidesPerView: 6,
+            },
+            1400: {
+              slidesPerView: 6,
+            }
+          }}
+          modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+          speed={200}
+          navigation={{
+            nextEl: ".swiper-button-next3",
+            prevEl: ".swiper-button-prev3",
+          }}
+          className=" w-full mt-4"
+        >
+          {[1, 2, 3, 4, 5, 6].map((item, index) => (
+            <SwiperSlide key={index}>
+              <CategroiesCard
+                CategorieImg={CategorieImg}
+                CategorieName={CategorieName}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

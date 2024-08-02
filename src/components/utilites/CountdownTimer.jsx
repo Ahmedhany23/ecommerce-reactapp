@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function CountdownTimer({ deadline }) {
+export default function CountdownTimer({ deadline , type = 1 }) {
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -20,6 +20,33 @@ export default function CountdownTimer({ deadline }) {
 
     return () => clearInterval(interval);
   }, []);
+
+  if(type === 2){
+    return(
+      <div className=" flex gap-2 sm:gap-6 ">
+      <div className="flex flex-col justify-center items-center w-[62px] h-[62px] rounded-full bg-background-1 ">
+        <span className="font-semibold">{days}</span>
+        <span className="text-[11px]">Days</span>
+      </div>
+      <div className="flex flex-col justify-center items-center w-[62px] h-[62px] rounded-full bg-background-1">
+        <span className="font-semibold">{hours}</span>
+        <span className="text-[11px]">Hours</span>
+      </div>
+      
+       <div className="flex flex-col justify-center items-center w-[62px] h-[62px] rounded-full bg-background-1">
+        <span className="font-semibold">{minutes}</span>
+        <span className="text-[11px]">Minutes</span>
+      </div>
+      
+       <div className="flex flex-col justify-center items-center w-[62px] h-[62px] rounded-full bg-background-1">
+        <span className="font-semibold">{seconds}</span>
+        <span className="text-[11px]">Seconds</span>
+      </div>
+    </div>
+    )
+  }
+
+
   return (
     <div className="countdown-timer">
       <div className="countdown-item">
