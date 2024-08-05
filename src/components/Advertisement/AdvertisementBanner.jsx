@@ -21,7 +21,7 @@ export default function AdvertisementBanner({type = 1 , deadline}) {
           </div>
           <div className="max-w-[600px] w-full relative h-full flex items-center">
             <img src="/images/Home/JBLSpeaker.png" alt="Jbl Speaker"  className="w-full max-w-[568px]  sm:h-[330px] z-10"/>
-            <div className="absolute top-0 left-10 right-0 bottom-0 bg-[#d9d9d9] bg-opacity-30 w-[504px] h-[500px]  rounded-full  blur-3xl"></div>
+            <div className="absolute top-0 left-10 right-0 bottom-0 bg-[#d9d9d9] bg-opacity-30 sm:w-[504px] sm:h-[500px]  rounded-full  blur-3xl"></div>
           </div>
         </div>
       </section>

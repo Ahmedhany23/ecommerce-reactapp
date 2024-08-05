@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import FullServices from "../../components/About/FullServices";
+import FullServices from '../../components/utilites/FullServices'
 import OurStory from "../../components/About/OurStory";
 import ServicesGrid from "../../components/About/ServicesGrid";
 

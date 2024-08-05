@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { FiUser } from "react-icons/fi";
-
+import { Link } from "react-router-dom";
 export default function AccountCartIcons({
   favoriteNumber = false,
   cartNumber = false,
   cartIcons,
-  user
+  user,
 }) {
   const [hover, setHover] = useState(false);
   return (
@@ -27,19 +27,22 @@ export default function AccountCartIcons({
                 {cartNumber}
               </div>
             )}
-
-            <img src="/images/icons/Cart1.png" alt="cart" />
+            <Link to="/cart">
+              {" "}
+              <img src="/images/icons/Cart1.png" alt="cart" />
+            </Link>
           </button>
         </>
       )}
-      {user && <button
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        className="flex items-center justify-center font-thin text-3xl rounded-full text-text-3 hover:bg-secondary-3 hover:text-text-1 transition duration-200 "
-      >
-        <FiUser />
-      </button> }
-      
+      {user && (
+        <button
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          className="flex items-center justify-center font-thin text-3xl rounded-full text-text-3 hover:bg-secondary-3 hover:text-text-1 transition duration-200 "
+        >
+          <FiUser />
+        </button>
+      )}
     </div>
   );
 }

@@ -1,9 +1,10 @@
 import { Outlet } from "react-router-dom";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import { HeaderCustomizationProvider } from "../hooks/HeaderCustomization";
+
 import { Suspense, useEffect } from "react";
 import Loading from "../components/Loading/Loading";
+
 
 const Layout = () => {
   useEffect(()=>{
@@ -11,8 +12,9 @@ const Layout = () => {
       window.scrollTo(0, 0);
     }
   })
+ 
   return (
-    <HeaderCustomizationProvider>
+    <>
       {/* Header */}
       <Header />
 
@@ -25,7 +27,7 @@ const Layout = () => {
 
       {/* Footer */}
       <Footer />
-    </HeaderCustomizationProvider>
+    </>
   );
 };
 

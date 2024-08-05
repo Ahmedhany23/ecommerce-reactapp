@@ -10,9 +10,13 @@ import {
 } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import ProdcutCard from "../Product/ProdcutCard";
+import ProductCard from "../Product/ProdcutCard";
 import CategroiesCard from "../Category/CategroiesCard";
-export default function Carousel({ Type = 1, CategorieImg, CategorieName }) {
+
+
+
+export default function Carousel({ Type = 1, categories, data }) {
+
   if (Type === 1) {
     return (
       <Swiper
@@ -33,7 +37,7 @@ export default function Carousel({ Type = 1, CategorieImg, CategorieName }) {
         grabCursor={true}
         className=" w-full lg:max-w-[892px] lg:h-[344px] "
       >
-        {[1, 2, 3, 4, 5, 6].map((item, index) => (
+        {[...new Array(6)].map((item, index) => (
           <SwiperSlide key={index}>
             <div className="bg-black w-full px-2 md:pl-16 flex sm:gap-[38px] ">
               <div>
@@ -117,9 +121,18 @@ export default function Carousel({ Type = 1, CategorieImg, CategorieName }) {
           }}
           className="mx-auto mt-4"
         >
-          {[1, 2, 3, 4, 5, 6].map((item, index) => (
+          {data.map((item, index) => (
             <SwiperSlide key={index}>
-              <ProdcutCard />
+              <ProductCard
+                id={item.id}
+                imgLink={item.image[0].img}
+                imgAlt={item.name}
+                name={item.name}
+                price={item.price}
+                priceremoved={item.priceremoved}
+                rate={item.rate}
+                reviews={item.reviews}
+              />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -165,7 +178,7 @@ export default function Carousel({ Type = 1, CategorieImg, CategorieName }) {
             },
             1400: {
               slidesPerView: 6,
-            }
+            },
           }}
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
           speed={200}
@@ -175,11 +188,12 @@ export default function Carousel({ Type = 1, CategorieImg, CategorieName }) {
           }}
           className=" w-full mt-4"
         >
-          {[1, 2, 3, 4, 5, 6].map((item, index) => (
+          {categories.map((item, index) => (
             <SwiperSlide key={index}>
               <CategroiesCard
-                CategorieImg={CategorieImg}
-                CategorieName={CategorieName}
+                CategorieImg={item.Image}
+                CategorieImgHover={item.ImageHover}
+                CategorieName={item.title}
               />
             </SwiperSlide>
           ))}

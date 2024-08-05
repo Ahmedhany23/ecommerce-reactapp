@@ -3,7 +3,9 @@ import CountdownTimer from "../utilites/CountdownTimer";
 import Carousel from "../utilites/Carousel";
 import Button from "../utilites/Button";
 import { Link } from "react-router-dom";
-export default function FlashSalesSection() {
+import Loading from "../Loading/Loading";
+
+export default function FlashSalesSection({ data, isLoading }) {
   const deadline = "August, 31, 2024";
 
   return (
@@ -13,17 +15,17 @@ export default function FlashSalesSection() {
           <SubTitle sectionTitle={"Today's"} title={"Flash Sales"} />
           <CountdownTimer deadline={deadline} />
         </div>
-        <Carousel Type={2} />
+
+        {isLoading ? <Loading type={2}/> : <Carousel Type={2} data={data} />}
+
         <div className="mt-[76px] text-center">
-        <Link to={'/products'}>
-        <Button text={"View All Products"} />
-        </Link>
-         
+          <Link to={"/products"}>
+            <Button text={"View All Products"} />
+          </Link>
         </div>
-           {/* divider */}
-      <div className="w-full border-[0.5px] border-secondary-1 mt-[60px]"/>
+        {/* divider */}
+        <div className="w-full border-[0.5px] border-secondary-1 mt-[60px]" />
       </div>
-   
     </section>
   );
 }
