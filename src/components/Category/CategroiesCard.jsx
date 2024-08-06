@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function CategroiesCard({ CategorieImg, CategorieName, CategorieImgHover }) {
   return (
     <Link
-      to={`/category/${CategorieName && CategorieName.toLowerCase()}`}
+      to={`/category?name=${CategorieName && CategorieName.toLowerCase()}`}
       className="mx-auto w-[170px] h-[145px] py-[25px] flex flex-col items-center justify-center gap-4 border rounded border-secondary-1 group hover:border-none hover:bg-secondary-3 transtion duration-200 "
     >
        <img

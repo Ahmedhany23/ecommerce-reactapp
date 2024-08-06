@@ -29,9 +29,11 @@ export const cartSlice = createSlice({
       );
     },
     updateQuantity: (state, action) => {
-      const { index, quantity } = action.payload;
-
-      // If quantity is less than 1, remove the item
+      const { id, quantity } = action.payload;
+      const index = state.selectedProducts.findIndex(
+        (product) => product.id === id
+      );
+      
       if (quantity < 1) {
         state.selectedProducts.splice(index, 1);
         state.selectedProductsID.splice(index, 1);

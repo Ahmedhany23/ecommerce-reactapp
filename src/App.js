@@ -1,10 +1,10 @@
-import React, { lazy } from "react";
+import { lazy, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./Layouts/Layout";
 import { SuspenseWithDelay } from "./hooks/useLoadingWithDelay";
 import ReactQueryClientProvider from "./context/QueryClientProvider";
 import { HeaderCustomizationProvider } from "./hooks/HeaderCustomization";
-
+import ScrollToTop from "./components/utilites/ScrollToTop";
 // Lazy load the components
 const HomePage = lazy(() => import("./pages/Home/Home"));
 const NotFoundPage = lazy(() => import("./pages/NotFound/NotFoundPage"));
@@ -13,11 +13,20 @@ const Login = lazy(() => import("./pages/Login/Login"));
 const ContactPage = lazy(() => import("./pages/Contact/ContactPage"));
 const AboutPage = lazy(() => import("./pages/About/AboutPage"));
 const CartPage = lazy(() => import("./pages/Cart/CartPage"));
+const ProductDetailsPage = lazy(() =>
+  import("./pages/ProductDetails/ProductDetails")
+);
+const ProductsPage = lazy(() => import("./pages/Product/ProductsPage"));
+const CategoryPage = lazy(() => import("./pages/Category/CategoryPage"));
+const SearchPage = lazy(() => import("./pages/Search/SearchPage"));
+const AccountPage = lazy(() => import("./pages/Account/AccountPage"));
+
 function App() {
   return (
     <ReactQueryClientProvider>
       <HeaderCustomizationProvider>
         <Router>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route
@@ -58,6 +67,46 @@ function App() {
                 element={
                   <SuspenseWithDelay delay={2000}>
                     <CartPage />
+                  </SuspenseWithDelay>
+                }
+              />
+              <Route
+                path="/productdetails/:id"
+                element={
+                  <SuspenseWithDelay delay={2000}>
+                    <ProductDetailsPage />
+                  </SuspenseWithDelay>
+                }
+              />
+              <Route
+                path="/productS"
+                element={
+                  <SuspenseWithDelay delay={2000}>
+                    <ProductsPage />
+                  </SuspenseWithDelay>
+                }
+              />
+              <Route
+                path="/category"
+                element={
+                  <SuspenseWithDelay delay={2000}>
+                    <CategoryPage />
+                  </SuspenseWithDelay>
+                }
+              />
+              <Route
+                path="/account"
+                element={
+                  <SuspenseWithDelay delay={2000}>
+                    <AccountPage />
+                  </SuspenseWithDelay>
+                }
+              />
+              <Route
+                path="/search"
+                element={
+                  <SuspenseWithDelay delay={2000}>
+                    <SearchPage />
                   </SuspenseWithDelay>
                 }
               />

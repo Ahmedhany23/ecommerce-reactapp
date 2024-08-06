@@ -5,22 +5,32 @@ import { IoEyeOutline } from "react-icons/io5";
 import { motion, AnimatePresence } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../Redux/CartSlice";
-
-export default function ProductCard({ imgLink, imgAlt = "image" , name , price , priceremoved , rate , reviews , id }) {
+import { Link } from "react-router-dom";
+export default function ProductCard({
+  imgLink,
+  imgAlt = "image",
+  name,
+  price,
+  priceremoved,
+  rate,
+  reviews,
+  id,
+  discount
+}) {
   const [hidden, setHidden] = useState(false);
-  const [isAdded, setIsAdded] = useState(false)
+  const [isAdded, setIsAdded] = useState(false);
   const dispatch = useDispatch();
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
-    setIsAdded(true); 
+    setIsAdded(true);
   };
 
-
   useEffect(() => {
-    const checkCart = localStorage.getItem("selectedProducts") !== null
-      ? JSON.parse(localStorage.getItem("selectedProducts"))
-      : [];
+    const checkCart =
+      localStorage.getItem("selectedProducts") !== null
+        ? JSON.parse(localStorage.getItem("selectedProducts"))
+        : [];
 
     const isProductInCart = checkCart.some((product) => product.id === id);
     setIsAdded(isProductInCart);
@@ -30,8 +40,10 @@ export default function ProductCard({ imgLink, imgAlt = "image" , name , price ,
     id,
     image: imgLink,
     price,
-    name
+    name,
   };
+
+  const discountPercentage = ((priceremoved - price) / priceremoved * 100).toFixed(0);
 
   return (
     <div className="max-w-[270px] w-full mx-auto sm:mx-none">
@@ -40,16 +52,31 @@ export default function ProductCard({ imgLink, imgAlt = "image" , name , price ,
         onMouseEnter={() => setHidden(true)}
         onMouseLeave={() => setHidden(false)}
       >
-        <img src={imgLink} alt={imgAlt} className="w-[190px] h-[200px] object-cover" />
-
+        <Link to={`/productdetails/${id}`}>
+          <img
+            src={imgLink}
+            alt={imgAlt}
+            className=" w-[190px] object-cover hover:scale-110 transition duration-200"
+          />
+        </Link>
+        {/* Watchlist and view */}
         <div className="flex flex-col gap-2 absolute top-3 right-3">
           <button className="w-[34px] h-[34px] rounded-full bg-background-1 flex items-center justify-center text-2xl hover:text-text-1 hover:bg-secondary-3 hover:scale-105 transition duration-200">
             <IoIosHeartEmpty />
           </button>
-          <button className="w-[34px] h-[34px] rounded-full bg-background-1 flex items-center justify-center text-2xl hover:text-text-1 hover:bg-secondary-3 hover:scale-105 transition duration-200">
-            <IoEyeOutline />
-          </button>
+          <Link to={`/productdetails/${id}`}>
+            <button className="w-[34px] h-[34px] rounded-full bg-background-1 flex items-center justify-center text-2xl hover:text-text-1 hover:bg-secondary-3 hover:scale-105 transition duration-200">
+              <IoEyeOutline />
+            </button>
+          </Link>
         </div>
+
+      {/* Product sale */}
+
+      <div className="absolute top-3 left-3 bg-secondary-3 py-1 px-3 ">
+        <p className="text-text-1 text-xs">-{discountPercentage}%</p>
+      </div>
+
         <AnimatePresence mode="wait">
           {hidden && (
             <motion.button
@@ -60,16 +87,21 @@ export default function ProductCard({ imgLink, imgAlt = "image" , name , price ,
               disabled={isAdded}
               className="w-full bg-background-2 text-text-1 font-medium rounded-bl rounded-br  h-[41px]  absolute "
             >
-               {isAdded ? "Added To Cart" : "Add To Cart"}
+              {isAdded ? "Added To Cart" : "Add To Cart"}
             </motion.button>
           )}
         </AnimatePresence>
       </div>
       <div className="mt-4 flex flex-col gap-2">
-        <h4 className="font-medium text-text-3">{name?.slice(0,25)}...</h4>
+        <Link to={`/productdetails/${id}`}>
+          <h4 className="font-medium text-text-3 hover:text-text-2 transition duration-200">
+            {name?.slice(0, 25)}...
+          </h4>
+        </Link>
+
         <div className=" flex gap-3 items-center">
-          <p className=" text-secondary-3 font-medium">{price} </p>
-          <p className="text-text-2  line-through">{priceremoved}</p>
+          <p className=" text-secondary-3 font-medium">${price} </p>
+          <p className="text-text-2  line-through">${priceremoved}</p>
         </div>
         <div className="flex items-center gap-2 h-[20px]">
           <ReactStars
@@ -85,4 +117,3 @@ export default function ProductCard({ imgLink, imgAlt = "image" , name , price ,
     </div>
   );
 }
-

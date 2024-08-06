@@ -13,10 +13,7 @@ import "swiper/css/pagination";
 import ProductCard from "../Product/ProdcutCard";
 import CategroiesCard from "../Category/CategroiesCard";
 
-
-
 export default function Carousel({ Type = 1, categories, data }) {
-
   if (Type === 1) {
     return (
       <Swiper
@@ -129,9 +126,10 @@ export default function Carousel({ Type = 1, categories, data }) {
                 imgAlt={item.name}
                 name={item.name}
                 price={item.price}
-                priceremoved={item.priceremoved}
+                priceremoved={item.removedprice}
                 rate={item.rate}
                 reviews={item.reviews}
+                discount={item.discount}
               />
             </SwiperSlide>
           ))}

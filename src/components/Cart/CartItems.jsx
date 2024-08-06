@@ -18,9 +18,9 @@ export default function CartItems() {
     }, 1500);
   };
 
-  const handleQuantityChange = (index, newQuantity) => {
+  const handleQuantityChange = (id, newQuantity) => {
     if (newQuantity < 0) return;
-    dispatch(updateQuantity({ index, quantity: newQuantity }));
+    dispatch(updateQuantity({ id, quantity: newQuantity }));
   };
 
   return (
@@ -45,7 +45,7 @@ export default function CartItems() {
           >
             <div className="flex items-center gap-[15px]">
               <img
-                src={item.image}
+                src={item.image[0].img}
                 alt={item.name}
                 className="w-[54px] h-[54px]"
               />
@@ -57,7 +57,7 @@ export default function CartItems() {
                 type="number"
                 value={item.quantity}
                 onChange={(e) =>
-                  handleQuantityChange(index, parseInt(e.target.value))
+                  handleQuantityChange(item.id, parseInt(e.target.value))
                 }
                 className="w-[72px] h-[44px] px-3 py-[6px] outline-none border-[1.5px] border-black/40 rounded [&::-webkit-inner-spin-button]:opacity-100 [&::-webkit-outer-spin-button]:opacity-100"
                 min="0"

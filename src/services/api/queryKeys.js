@@ -1,4 +1,7 @@
 export const QUERY_KEYS = {
-    PRODUCTS: 'product',
+    PRODUCTS: 'products',
+    PRODUCTBYCATEGORY: 'productByCategory',
+    PRODUCTBYQUERY: 'productByQuery',
+    PRODUCT: 'product',
     CART: 'cart',
   };

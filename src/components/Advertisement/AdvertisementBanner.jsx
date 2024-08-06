@@ -2,7 +2,7 @@ import CategroiesList from "../Category/CategroiesList";
 import Button from "../utilites/Button";
 import Carousel from "../utilites/Carousel";
 import CountdownTimer from "../utilites/CountdownTimer";
-
+import { motion } from "framer-motion";
 
 export default function AdvertisementBanner({type = 1 , deadline}) {
 
@@ -30,10 +30,10 @@ export default function AdvertisementBanner({type = 1 , deadline}) {
 
   return (
     <section className="relative container mx-auto ">
-      <div className="pt-[40px] pb-[140px] flex justify-between">
+      <motion.div initial={{y:-2000}} animate={{y:0}} transition={{duration:0.6}} className="pt-[40px] pb-[140px] flex justify-between">
         <CategroiesList />
         <Carousel/>
-      </div>
+      </motion.div>
       {/* divider */}
       <div className=" hidden xl:block absolute h-[384px] top-0 left-64 w-1  bg-black/302 border-l-[0.5px]"/>
     </section>
