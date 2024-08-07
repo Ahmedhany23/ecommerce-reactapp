@@ -25,7 +25,7 @@ export default function CountdownTimer({ deadline, type = 1 }) {
     const interval = setInterval(() => getTime(deadline), 1000);
 
     return () => clearInterval(interval);
-  }, [deadline]); // Added deadline as a dependency
+  }, [deadline]);
 
   // Type 2 display
   if (type === 2) {

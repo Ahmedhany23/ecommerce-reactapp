@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 
-import { Suspense,useEffect,useState } from "react";
+import { Suspense,useEffect } from "react";
 import Loading from "../components/Loading/Loading";
 import { useHeaderCustomization } from "../hooks/HeaderCustomization";
 import { useAuthState } from "react-firebase-hooks/auth";

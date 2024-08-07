@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useHeaderCustomization } from "../../hooks/HeaderCustomization";
 import { useEffect, useState } from "react";
-import NotFoundPage from "../NotFound/NotFoundPage";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -33,7 +32,6 @@ export default function Signup() {
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
 
         updateProfile(auth.currentUser, {
           displayName: username,

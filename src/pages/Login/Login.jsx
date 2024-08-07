@@ -10,6 +10,7 @@ export default function Login() {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [user] = useAuthState(auth);
+
   useEffect(() => {
     setCartIcon(false);
     if (user) {
@@ -28,8 +29,7 @@ export default function Login() {
     const formData = new FormData(event.target);
     const { email, password } = Object.fromEntries(formData);
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
+      .then(() => {
       })
       .catch((error) => {
         const errorCode = error.code;
