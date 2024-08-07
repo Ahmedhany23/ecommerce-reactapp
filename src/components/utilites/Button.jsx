@@ -9,7 +9,7 @@ export default function Button({ text, type = 1, onClick }) {
           : type === 2
           ? "border border-black/50 flex items-center justify-center rounded  hover:opacity-50 transition mb-8"
           : "bg-button-1   hover:bg-hoverButton-2 text-text-1"
-      } py-4 px-12  text-base  whitespace-nowrap`}
+      } py-4 px-12  text-base  whitespace-nowrap w-full sm:w-fit`}
     >
       {text}
     </button>

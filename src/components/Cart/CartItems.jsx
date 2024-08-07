@@ -27,25 +27,26 @@ export default function CartItems() {
     <div className="w-full flex flex-col gap-10 pt-20 ">
       {/* Cart Title */}
 
-      <div className="w-full py-6 bg-background-1 border-black/5 border shadow-md hidden sm:grid sm:grid-cols-4 sm:place-items-center">
+      <div className="w-full py-6 bg-background-1 border-black/5 border shadow-md grid grid-cols-4  sm:place-items-center">
         <p className="font-normal">Product</p>
         <p className="font-normal">Price</p>
         <p className="font-normal">Quantity</p>
         <p className="font-normal">Subtotal</p>
       </div>
-
-      {refresh ? (
+      {data.length === 0 && <h1 className="text-red">No Items Added To Cart</h1> }
+    {refresh ? (
         data?.map((item, index) => (
           <motion.div
-          initial={{opacity:0}}
-          animate={{opacity:1}}
+          key={item.id} 
+          initial={{x:'-100%'}}
+          animate={{x:1}}
           transition={{duration:0.3}}
-            key={index}
-            className="w-full py-6 bg-background-1 border-black/5 border shadow-md flex items-center justify-between sm:grid sm:grid-cols-4 sm:place-items-center"
+          layout
+            className="w-full py-6 bg-background-1 border-black/5 border shadow-md flex flex-col gap-5 sm:flex-row items-center justify-between sm:grid sm:grid-cols-4 sm:place-items-center"
           >
             <div className="flex items-center gap-[15px]">
               <img
-                src={item.image[0].img}
+                src={item.image[0].img ? item.image[0].img :   item.image}
                 alt={item.name}
                 className="w-[54px] h-[54px]"
               />
@@ -70,9 +71,10 @@ export default function CartItems() {
         <Loading />
       )}
 
+      
+
       <div className="w-full flex flex-col sm:flex-row justify-between">
         <Link to="/">
-          {" "}
           <Button text={"Return To Shop"} type={2} />
         </Link>
 

@@ -5,7 +5,7 @@ import Button from "../utilites/Button";
 import { Link } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import { motion } from "framer-motion";
-export default function FlashSalesSection({ data, isLoading }) {
+export default function FlashSalesSection({ data, isLoading ,cartIsAdded }) {
   const deadline = "August, 31, 2024";
 
   return (
@@ -16,7 +16,7 @@ export default function FlashSalesSection({ data, isLoading }) {
           <CountdownTimer deadline={deadline} />
         </motion.div>
 
-        {isLoading ? <Loading type={2}/> : <Carousel Type={2} data={data} />}
+        {isLoading ? <Loading type={2}/> : <Carousel Type={2} data={data} cartIsAdded={cartIsAdded} />}
 
         <div className="mt-[76px] text-center">
           <Link to={"/products"}>

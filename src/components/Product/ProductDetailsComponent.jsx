@@ -5,9 +5,7 @@ import Loading from "../Loading/Loading";
 import Button from "../utilites/Button";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { addToCart, updateQuantity } from "../../Redux/CartSlice";
-import { HiOutlineMinus } from "react-icons/hi";
-import { GoPlus } from "react-icons/go";
-export default function ProductDetailsComponent({ data, isLoading, error }) {
+export default function ProductDetailsComponent({ data, isLoading, error ,setCartAdded }) {
   const [index, setIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
@@ -24,6 +22,10 @@ export default function ProductDetailsComponent({ data, isLoading, error }) {
 
   const handleAddToCart = () => {
     dispatch(addToCart(data));
+    setCartAdded(true)
+    setTimeout(()=>{
+      setCartAdded(false)
+    },1000)
   };
 
   const handleIncrement = () => {
@@ -48,12 +50,12 @@ export default function ProductDetailsComponent({ data, isLoading, error }) {
       <div className="flex gap-[71px] flex-col items-center lg:items-stretch lg:flex-row justify-center px-1">
         {/* Product Images */}
         <div className="flex flex-col-reverse sm:flex-row gap-[30px] justify-center">
-          <div className="flex justify-center sm:justify-normal sm:flex-col gap-4">
+          <div className="flex justify-center   sm:justify-normal sm:flex-col gap-4">
             {data.image.map((image, i) => (
               <div
                 key={i}
                 onClick={() => setIndex(i)}
-                className="w-[170px] h-[130px] bg-secondary-1 flex items-center justify-center cursor-pointer group"
+                className=" sm:w-[170px] h-[130px] bg-secondary-1 flex items-center justify-center cursor-pointer group"
               >
                 <img
                   src={image.img}
@@ -67,7 +69,7 @@ export default function ProductDetailsComponent({ data, isLoading, error }) {
             <img
               src={data.image[index]?.img}
               alt="product"
-              className="w-[446px] object-cover"
+              className="w-[320px] sm:w-[446px] object-cover"
             />
           </div>
         </div>

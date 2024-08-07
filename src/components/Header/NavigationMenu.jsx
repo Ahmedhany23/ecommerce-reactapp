@@ -70,7 +70,7 @@ export default function NavigationMenu({ isOpen, setIsOpen }) {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed bottom-0 left-0 right-0 w-auto min-h-full bg-background-2 z-10 px-3 py-6 md:static md:hidden"
+            className="fixed bottom-0 left-0 right-0 w-auto min-h-full bg-background-2 z-10 px-3 py-6 md:static md:hidden z-50"
           >
             <div className="text-text-1 text-6xl flex justify-end w-full">
               <IoClose
