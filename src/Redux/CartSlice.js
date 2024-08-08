@@ -51,10 +51,23 @@ export const cartSlice = createSlice({
         JSON.stringify(state.selectedProductsID)
       );
     },
+    removeData: (state, action) => {
+      state.selectedProducts = [];
+      state.selectedProductsID = [];
+      // Update local storage
+      localStorage.setItem(
+        "selectedProducts",
+        JSON.stringify(state.selectedProducts)
+      );
+      localStorage.setItem(
+        "selectedProductsID",
+        JSON.stringify(state.selectedProductsID)
+      );
+    },
   },
 });
 
-export const { addToCart, updateQuantity } =
+export const { addToCart, updateQuantity ,removeData } =
 cartSlice.actions;
 
 export default cartSlice.reducer;

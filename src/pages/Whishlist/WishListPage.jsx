@@ -44,10 +44,10 @@ export default function WishListPage() {
           </div>
         </div>
         {/* Just For You */}
-        <div>
+        
           <div className="flex justify-between mb-[10px] flex-col  gap-5 sm:gap-0 sm:flex-row  sm:items-center px-4 sm:px-0">
             <SubTitle sectionTitle={"Just For You"} />
-            <Link to="/products" className="w-full">
+            <Link to="/products" className="">
               <Button text={"See All"} type={2} />
             </Link>
           </div>
@@ -57,7 +57,7 @@ export default function WishListPage() {
             EndIndex={12}
             isLoading={isLoading}
           />
-        </div>
+        
         <AnimatePresence mode="wait">
           {cartAdded && (
             <motion.div
