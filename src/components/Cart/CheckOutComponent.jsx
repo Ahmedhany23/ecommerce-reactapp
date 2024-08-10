@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Button from "../utilites/Button"
 import { useSelector } from "react-redux";
+import NotFound from "../../pages/NotFound/NotFound"
 
 export default function CheckOutComponent() {
     const data = useSelector((state) => state.cart.selectedProducts);
@@ -38,6 +39,9 @@ export default function CheckOutComponent() {
           </div>
       </div>
     )
+  }
+  else{
+    return <NotFound/>;
   }
   
 }
