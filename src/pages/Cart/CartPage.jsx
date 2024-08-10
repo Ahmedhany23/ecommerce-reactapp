@@ -1,4 +1,4 @@
-import PathComponent from "../..components/utilites/path";
+import PathComponent from "../../components/utilites/path";
 import CartItems from "../../components/Cart/CartItems";
 import CheckOutComponent from "../../components/Cart/CheckOutComponent";
 import CouponComponent from "../../components/Cart/CouponComponent";
