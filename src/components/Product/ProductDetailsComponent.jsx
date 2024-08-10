@@ -5,6 +5,7 @@ import Loading from "../Loading/Loading";
 import Button from "../utilites/Button";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { addToCart, updateQuantity } from "../../Redux/CartSlice";
+import { Link } from "react-router-dom";
 export default function ProductDetailsComponent({ data, isLoading, error ,setCartAdded }) {
   const [index, setIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -123,7 +124,10 @@ export default function ProductDetailsComponent({ data, isLoading, error ,setCar
                 <Button text={"Add To Cart"} onClick={handleAddToCart}  />
               
             )}
-            <Button text={"Buy Now"} />
+            <Link to="/checkout">
+             <Button text={"Buy Now"}  onClick={handleAddToCart} />
+            </Link>
+           
             <div className="py-2 px-2 border border-black/20 flex items-center justify-center rounded hover:bg-secondary-3 hover:border-none transition duration-200 group">
               <IoIosHeartEmpty className="group-hover:text-text-1 transition text-3xl cursor-pointer" />
             </div>
