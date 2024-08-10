@@ -38,7 +38,7 @@ export default function CheckOutDetails() {
     }
    
   };
-  if(user){
+  
     return (
         <div className="flex flex-col gap-8">
           {data.map((item) => (
@@ -107,6 +107,6 @@ export default function CheckOutDetails() {
           </button>
         </div>
       );
-  }
+  
   
 }
