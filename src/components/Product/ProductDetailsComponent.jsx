@@ -5,13 +5,32 @@ import Loading from "../Loading/Loading";
 import Button from "../utilites/Button";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { addToCart, updateQuantity } from "../../Redux/CartSlice";
+import { addToWishList } from "../../Redux/WishSlice";
 import { Link } from "react-router-dom";
 export default function ProductDetailsComponent({ data, isLoading, error ,setCartAdded }) {
   const [index, setIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const [isAddedWishList, setIsAddedWishList] = useState(false);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.selectedProducts);
   const productInCart = cart.find((item) => item.id === data.id);
+
+
+  const handleAddToWishList = (product) => {
+    dispatch(addToWishList(product));
+    setIsAddedWishList(true);
+  };
+
+  useEffect(() => {
+    const checkWishList =
+      localStorage.getItem("wishlistProducts") !== null
+        ? JSON.parse(localStorage.getItem("wishlistProducts"))
+        : [];
+    const isProductInWishList = checkWishList.some(
+      (product) => product.id === productInCart.id
+    );
+    setIsAddedWishList(isProductInWishList);
+  }, []);
 
   useEffect(() => {
     if (productInCart) {
@@ -48,7 +67,7 @@ export default function ProductDetailsComponent({ data, isLoading, error ,setCar
 
   return (
     <div className="pt-[80px]">
-      <div className="flex gap-[71px] flex-col items-center lg:items-stretch lg:flex-row justify-center px-1">
+      <div className="flex gap-20 xl:gap-[71px] flex-col items-center lg:items-stretch lg:flex-row justify-center px-1">
         {/* Product Images */}
         <div className="flex flex-col-reverse sm:flex-row gap-[30px] justify-center">
           <div className="flex justify-center   sm:justify-normal sm:flex-col gap-4">
@@ -66,7 +85,7 @@ export default function ProductDetailsComponent({ data, isLoading, error ,setCar
               </div>
             ))}
           </div>
-          <div className="w-full max-w-[500px] h-[600px] bg-secondary-1 px-[27px] flex items-center justify-center">
+          <div className=" w-full lg:w-[500px] h-[600px] bg-secondary-1 px-[27px] flex items-center justify-center">
             <img
               src={data.image[index]?.img}
               alt="product"
@@ -99,12 +118,12 @@ export default function ProductDetailsComponent({ data, isLoading, error ,setCar
             </p>
           </div>
           <p className="text-2xl font-inter mb-6">${data.price}</p>
-          <p className="text-sm mb-6 xl:max-w-[373px]">{data.description}</p>
+          <p className="text-sm mb-6 lg:max-w-[373px]">{data.description}</p>
           {/* Divider */}
           <div className="w-full border border-black opacity-50 mb-6"></div>
 
-          <div className="flex flex-col sm:flex-row gap-[19px] mb-10">
-          {productInCart ? (
+          <div className="flex flex-col sm:flex-row justify-center items-center lg:justify-normal lg:items-stretch gap-[19px] mb-10">
+          { productInCart ? (
               <div className="quantity-selector flex items-center justify-center gap-8  ">
                 <button
                   onClick={handleDecrement}
@@ -125,15 +144,16 @@ export default function ProductDetailsComponent({ data, isLoading, error ,setCar
               
             )}
             <Link to="/checkout">
-             <Button text={"Buy Now"}  onClick={handleAddToCart} />
+             <Button text={"Buy Now"}  onClick={handleAddToCart} disabled={productInCart}/>
             </Link>
            
-            <div className="py-2 px-2 border border-black/20 flex items-center justify-center rounded hover:bg-secondary-3 hover:border-none transition duration-200 group">
-              <IoIosHeartEmpty className="group-hover:text-text-1 transition text-3xl cursor-pointer" />
-            </div>
+            <button onClick={() => handleAddToWishList({id:data.id,image:data.image[0].img,price:data.price,name:data.name})}
+              disabled={isAddedWishList} className={`py-2 px-2 border border-black/20 flex items-center justify-center rounded hover:bg-secondary-3 ${isAddedWishList && "bg-secondary-3 border-none"} hover:border-none transition duration-200 group`}>
+              <IoIosHeartEmpty  className={`group-hover:text-text-1 transition text-3xl cursor-pointer ${isAddedWishList && "text-text-1 "}`} />
+            </button>
           </div>
 
-          <div className="max-w-[400px] w-full border border-black/20 rounded">
+          <div className="max-w-[400px] w-full border border-black/20 rounded justify-center mx-auto lg:mx-0">
             <div className="flex gap-4 items-center pl-4 py-6 ">
               <img src="/images/icons/icon-delivery.png" alt="icon-delivery" />
               <div className="flex flex-col gap-2">

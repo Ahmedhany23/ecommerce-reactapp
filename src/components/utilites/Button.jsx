@@ -1,6 +1,7 @@
-export default function Button({ text, type = 1, onClick }) {
+export default function Button({ text, type = 1, onClick , disabled }) {
   return (
     <button
+    disabled={disabled}
       type="submit"
       onClick={onClick}
       className={` ${
