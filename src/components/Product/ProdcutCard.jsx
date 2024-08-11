@@ -82,6 +82,7 @@ export default function ProductCard({
         className="relative w-full h-[250px] bg-secondary-1  flex flex-col items-center justify-center z-10 overflow-y-hidden"
         onMouseEnter={() => setHidden(true)}
         onMouseLeave={() => setHidden(false)}
+        onClick={()=> setHidden(!hidden)}
       >
         <img
           src={imgLink}

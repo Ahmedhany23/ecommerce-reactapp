@@ -7,7 +7,7 @@ import { useNavigate } from "react-router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase/config";
 export default function CheckOutDetails() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [user] = useAuthState(auth);
   const data = useSelector((state) => state.cart.selectedProducts);
@@ -20,6 +20,10 @@ export default function CheckOutDetails() {
     if (data.length === 0) {
       console.error("Cart is empty!");
       return;
+    }
+    if(!user)
+    {
+      navigate("/signup")
     }
     if(user){
         addCart({...data , user: user.displayName}, {
@@ -34,7 +38,7 @@ export default function CheckOutDetails() {
     }
    
   };
-  if(user){
+  
     return (
         <div className="flex flex-col gap-8">
           {data.map((item) => (
@@ -103,6 +107,6 @@ export default function CheckOutDetails() {
           </button>
         </div>
       );
-  }
+  
   
 }

@@ -30,7 +30,7 @@ Welcome to the **E-commerce Website**, a platform where you can explore a wide v
 
 ## Technologies Used
 
-- **Frontend:** HTML, CSS, JavaScript, React.js, Nextjs.
+- **Frontend:** HTML, CSS, JavaScript, React.js.
 - **Authentication:** Firebase.
 - **Hosting:** Vercel.
 
