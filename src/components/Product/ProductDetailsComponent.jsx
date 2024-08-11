@@ -98,7 +98,7 @@ export default function ProductDetailsComponent({ data, isLoading, error ,setCar
             </p>
           </div>
           <p className="text-2xl font-inter mb-6">${data.price}</p>
-          <p className="text-sm mb-6 max-w-[373px]">{data.description}</p>
+          <p className="text-sm mb-6 xl:max-w-[373px]">{data.description}</p>
           {/* Divider */}
           <div className="w-full border border-black opacity-50 mb-6"></div>
 

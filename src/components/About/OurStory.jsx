@@ -1,4 +1,4 @@
-
+import { motion } from "framer-motion";
 export default function OurStory() {
   return (
     <section
@@ -22,14 +22,14 @@ export default function OurStory() {
           consumer.
         </p>
       </div>
-      
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{duration:0.4}} className=" relative xl:left-36 max-w-[837px] w-full xl:h-[609px]">
         <img
           src="/images/About/mainimage.webp"
           alt="Two african Females"
-          className=" relative xl:left-36 max-w-[837px] w-full xl:h-[609px]"
+          className="w-full"
           loading="eager"
         />
-      
+      </motion.div>
     </section>
   );
 }
