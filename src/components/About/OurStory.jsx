@@ -22,14 +22,15 @@ export default function OurStory() {
           consumer.
         </p>
       </div>
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{duration:0.4}} className=" relative xl:left-36 max-w-[837px] w-full xl:h-[609px]">
-        <img
+      
+        <motion.img
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{duration:0.4}}
           src="/images/About/mainimage.webp"
           alt="Two african Females"
-          className="w-full"
+          className="relative xl:left-36 max-w-[837px] w-full xl:h-[609px]"
           loading="eager"
         />
-      </motion.div>
+      
     </section>
   );
 }
