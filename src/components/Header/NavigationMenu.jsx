@@ -10,7 +10,10 @@ const navlinks = [
   { link: "Sign Up", path: "/signup" },
 ];
 
-export default function NavigationMenu({ isOpen, setIsOpen }) {
+export default function NavigationMenu({ isOpen, setIsOpen ,user}) {
+  
+
+
   const navVariants = {
     hidden: { y: "-200%" },
     visible: {
@@ -59,7 +62,7 @@ export default function NavigationMenu({ isOpen, setIsOpen }) {
               }`
             }
           >
-            {navlink.link}
+            {navlink.link === "Sign Up" && user ?  "" : navlink.link}
           </NavLink>
         ))}
       </nav>

@@ -18,11 +18,11 @@ export default function Header() {
       <div className="container mx-auto">
         <div className="flex justify-between pt-10 items-center px-3 md:px-0">
           <Logo />
-          <NavigationMenu isOpen={isOpen} setIsOpen={setIsOpen} />
+          <NavigationMenu isOpen={isOpen} setIsOpen={setIsOpen} user={user}/>
           <div className="flex items-center gap-6">
             <SearchBar />
             <AccountCartIcons cartIcons={cartIcons} user={user} />
-            <FaGripLines onClick={() => setIsOpen(true)}  className="block md:hidden text-4xl cursor-pointer"/>
+            <FaGripLines onClick={() => setIsOpen(true)}  className="block md:hidden text-4xl cursor-pointer" />
           </div>
 
         </div>
