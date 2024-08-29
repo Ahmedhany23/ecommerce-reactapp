@@ -13,14 +13,13 @@ import "swiper/css/pagination";
 import ProductCard from "../Product/ProdcutCard";
 import CategroiesCard from "../Category/CategroiesCard";
 
-export default function Carousel({ Type = 1, categories, data ,cartIsAdded }) {
-  //checkCartisAddedById
+export default function Carousel({ Type = "ad", categories, data ,cartIsAdded }) {
   const isProductInCart = (productId) => {
 
     return cartIsAdded.findIndex((cartItem) => cartItem.id === productId) !== -1;
   };
 
-  if (Type === 1) {
+  if (Type === "ad") {
     return (
       <Swiper
         spaceBetween={30}
@@ -38,9 +37,9 @@ export default function Carousel({ Type = 1, categories, data ,cartIsAdded }) {
         loop={true}
         autoplay={true}
         grabCursor={true}
-        className=" w-full lg:max-w-[892px] lg:h-[344px] "
+        className=" w-full lg:max-w-4xl lg:h-[344px] shadow-2xl "
       >
-        {[...new Array(6)].map((item, index) => (
+        {[...new Array(3)].map((item, index) => (
           <SwiperSlide key={index}>
             <div className="bg-black w-full px-2 md:pl-16 flex sm:gap-[38px] ">
               <div>
@@ -63,7 +62,7 @@ export default function Carousel({ Type = 1, categories, data ,cartIsAdded }) {
                 </Link>
               </div>
               {/* Image */}
-              <div className="w-[400px] sm:w-auto">
+              <div className="w-full sm:w-auto">
                 <img
                   src="/images/iphone.png"
                   alt=""
@@ -76,7 +75,7 @@ export default function Carousel({ Type = 1, categories, data ,cartIsAdded }) {
       </Swiper>
     );
   }
-  if (Type === 2) {
+  if (Type === "card") {
     return (
       <>
         <div className="absolute top-10 right-0 flex gap-3">

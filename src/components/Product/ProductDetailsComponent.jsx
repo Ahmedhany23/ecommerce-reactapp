@@ -6,46 +6,69 @@ import Button from "../utilites/Button";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { addToCart, updateQuantity } from "../../Redux/CartSlice";
 import { addToWishList } from "../../Redux/WishSlice";
-import { Link } from "react-router-dom";
-export default function ProductDetailsComponent({ data, isLoading, error ,setCartAdded }) {
+import { useNavigate } from "react-router-dom";
+export default function ProductDetailsComponent({ data, isLoading, error ,setCartAdded ,isFetching  }) {
   const [index, setIndex] = useState(0);
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(0);
   const [isAddedWishList, setIsAddedWishList] = useState(false);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.selectedProducts);
-  const productInCart = cart.find((item) => item.id === data.id);
-
-
+  const productInCart = cart.find((item) => item.id === data?.id);
+  const navigate = useNavigate();
   const handleAddToWishList = (product) => {
     dispatch(addToWishList(product));
     setIsAddedWishList(true);
   };
 
   useEffect(() => {
+    if (!data?.id) {
+      return;
+    }
+
     const checkWishList =
       localStorage.getItem("wishlistProducts") !== null
         ? JSON.parse(localStorage.getItem("wishlistProducts"))
         : [];
     const isProductInWishList = checkWishList.some(
-      (product) => product.id === productInCart.id
+      (product) => product.id === data.id
     );
     setIsAddedWishList(isProductInWishList);
-  }, []);
+  }, [data?.id]);
 
   useEffect(() => {
     if (productInCart) {
       setQuantity(productInCart.quantity);
     } else {
-      setQuantity(1);
+      setQuantity(0);
     }
   }, [data, productInCart]);
 
   const handleAddToCart = () => {
     dispatch(addToCart(data));
-    setCartAdded(true)
-    setTimeout(()=>{
-      setCartAdded(false)
-    },1000)
+    setCartAdded(true);
+    setQuantity(1);
+    setTimeout(() => {
+      setCartAdded(false);
+    }, 1000);
+  };
+
+  const handleBuyNow = () => {
+    if(quantity === 0){
+      dispatch(addToCart(data));
+      setCartAdded(true);
+      setTimeout(() => {
+        setCartAdded(false);
+        navigate('/checkout')
+      }, 1000);
+   
+    }
+    else{
+      console.log(quantity )
+      navigate('/checkout')
+    }
+
+
+
   };
 
   const handleIncrement = () => {
@@ -53,7 +76,7 @@ export default function ProductDetailsComponent({ data, isLoading, error ,setCar
   };
 
   const handleDecrement = () => {
-    if (quantity < 0) return;
+    if (quantity <= 0) return;
     dispatch(updateQuantity({ id: data.id, quantity: quantity - 1 }));
   };
 
@@ -64,7 +87,6 @@ export default function ProductDetailsComponent({ data, isLoading, error ,setCar
   if (error) {
     return <div>Error</div>;
   }
-
   return (
     <div className="pt-[80px]">
       <div className="flex gap-20 xl:gap-[71px] flex-col items-center lg:items-stretch lg:flex-row justify-center px-1">
@@ -143,9 +165,9 @@ export default function ProductDetailsComponent({ data, isLoading, error ,setCar
                 <Button text={"Add To Cart"} onClick={handleAddToCart}  />
               
             )}
-            <Link to="/checkout">
-             <Button text={"Buy Now"}  onClick={handleAddToCart} disabled={productInCart}/>
-            </Link>
+       
+             <Button text={"Buy Now"}  onClick={handleBuyNow}/>
+
            
             <button onClick={() => handleAddToWishList({id:data.id,image:data.image[0].img,price:data.price,name:data.name})}
               disabled={isAddedWishList} className={`py-2 px-2 border border-black/20 flex items-center justify-center rounded hover:bg-secondary-3 ${isAddedWishList && "bg-secondary-3 border-none"} hover:border-none transition duration-200 group`}>

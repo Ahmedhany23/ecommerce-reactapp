@@ -51,7 +51,7 @@ export default function NavigationMenu({ isOpen, setIsOpen ,user}) {
 
   return (
     <>
-      <nav className="hidden md:flex flex-row gap-12">
+      <nav className="hidden md:flex flex-row justify-center gap-12">
         {navlinks.map((navlink, i) => (
           <NavLink
             key={i}

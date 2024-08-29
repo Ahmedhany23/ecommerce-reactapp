@@ -10,7 +10,7 @@ export default function TopHeader() {
             Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
             <Link
               className="ml-1 text-text-1 text-sm font-semibold decoration-white underline font-poppins"
-              to="/"
+              to="/products"
             >
               ShopNow
             </Link>

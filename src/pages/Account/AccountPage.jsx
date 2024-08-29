@@ -35,27 +35,7 @@ export default function AccountPage() {
               <p className=" whitespace-nowrap text-secondary-3 transition duration-200 cursor-pointer">
                 My Profile
               </p>
-              <p className="text-text-2 whitespace-nowrap hover:text-secondary-3 transition duration-200 cursor-pointer">
-                Address Book
-              </p>
-              <p className="text-text-2 whitespace-nowrap hover:text-secondary-3 transition duration-200 cursor-pointer">
-                My Payment Options
-              </p>
             </div>
-          </div>
-          <div>
-            <h4 className="font-medium whitespace-nowrap">My Orders</h4>
-            <div className="pl-[35px] pt-4 space-y-2">
-              <p className="text-text-2 whitespace-nowrap hover:text-secondary-3 transition duration-200 cursor-pointer">
-                My Returns
-              </p>
-              <p className="text-text-2 whitespace-nowrap hover:text-secondary-3 transition duration-200 cursor-pointer">
-                My Cancellations
-              </p>
-            </div>
-          </div>
-          <div>
-            <h4 className="font-medium whitespace-nowrap">My WishList</h4>
           </div>
         </div>
         <EditProfile/>

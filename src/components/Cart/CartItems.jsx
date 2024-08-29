@@ -33,24 +33,30 @@ export default function CartItems() {
         <p className="font-normal">Quantity</p>
         <p className="font-normal">Subtotal</p>
       </div>
-      {data.length === 0 && <h1 className="text-red">No Items Added To Cart</h1> }
-    {refresh ? (
+      {data.length === 0 && (
+        <h1 className="text-red">No Items Added To Cart</h1>
+      )}
+      {refresh ? (
         data?.map((item, index) => (
           <motion.div
-          key={item.id} 
-          initial={{x:'-100%'}}
-          animate={{x:1}}
-          transition={{duration:0.3}}
-          layout
+            key={item.id}
+            initial={{ x: "-100%" }}
+            animate={{ x: 1 }}
+            transition={{ duration: 0.3 }}
+            layout
             className="w-full py-6 bg-background-1 border-black/5 border shadow-md flex flex-col gap-5 sm:flex-row items-center justify-between sm:grid sm:grid-cols-4 sm:place-items-center"
           >
             <div className="flex items-center gap-[15px]">
-              <img
-                src={item.image[0].img ? item.image[0].img :   item.image}
-                alt={item.name}
-                className="w-[54px] h-[54px]"
-              />
-              <p>{item.name}</p>
+              <Link to={`/productdetails/${item.id}`}>
+                <img
+                  src={item.image[0].img ? item.image[0].img : item.image}
+                  alt={item.name}
+                  className="w-[54px] h-[54px]"
+                />
+              </Link>
+              <Link to={`/productdetails/${item.id}`}>
+                <p>{item.name.slice(0, 20)}</p>
+              </Link>
             </div>
             <p>${item.price}</p>
             <div>
@@ -70,8 +76,6 @@ export default function CartItems() {
       ) : (
         <Loading />
       )}
-
-      
 
       <div className="w-full flex flex-col sm:flex-row justify-between">
         <Link to="/">

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import CouponComponent from "../Cart/CouponComponent";
-
+import { Link } from "react-router-dom";
 import { useAddCartToApi } from "../../hooks/useAddCartToApi";
 import { removeData } from "../../Redux/CartSlice";
 import { useNavigate } from "react-router";
@@ -44,12 +44,19 @@ export default function CheckOutDetails() {
           {data.map((item) => (
             <div key={item.id} className="flex items-center justify-between">
               <div className="flex items-center gap-6">
+                <Link to={`/productdetails/${item.id}`}>
                 <img
                   src={item.image[0].img ? item.image[0].img : item.image}
                   alt={item.name}
                   className="w-[52px] h-[52px]"
                 />
-                <p>{item.name}</p>
+                
+                </Link>
+                <Link to={`/productdetails/${item.id}`}>
+                <p>{item.name.slice(0,20)}</p>
+                </Link>
+               
+              
               </div>
               <p>${item.price}</p>
             </div>

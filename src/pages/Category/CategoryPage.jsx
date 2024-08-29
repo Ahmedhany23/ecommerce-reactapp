@@ -8,11 +8,12 @@ import Loading from '../../components/Loading/Loading';
 export default function CategoryPage() {
     const { search } = useLocation();
     const name = new URLSearchParams(search).get('name');
+    const captalize = name[0].toUpperCase() + name.slice(1);
     const {data ,isLoading} = useProductByCategory(name);
     if(isLoading) return <Loading/>
   return (
     <section className='container mx-auto pt-[80px] pb-[140px]'>
-        <PathComponent prev={'Category'} path={name}/>
+        <PathComponent prev={'Category'} path={captalize}/>
         <div className='pt-[20px]'>
         <ProductGrid data={data} isLoading={isLoading}/>
         </div>

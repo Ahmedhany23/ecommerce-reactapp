@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="bg-background-2 text-white pt-[80px] pb-6 font-poppins">
+    <footer className="bg-background-2 text-white pt-[80px] pb-6 font-poppins clear-both mt-[50px]">
       <div className="container mx-auto px-3">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-20 lg:gap-1 xl:gap-20">
           {/* Subscription Section */}

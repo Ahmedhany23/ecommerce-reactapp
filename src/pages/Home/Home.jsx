@@ -16,7 +16,6 @@ const deadline = "October , 23 2024";
 export default function HomePage() {
   const { data, isLoading } = useProducts();
   const CartData = useSelector((state) => state.cart.selectedProducts);
-  const { cartAdded } = useAddToCartContext();
 
   return (
     <>
@@ -41,18 +40,6 @@ export default function HomePage() {
       <NewArrivalSection />
       <FullServices />
       <ArrowToTop />
-      <AnimatePresence mode="wait">
-        {cartAdded && (
-          <motion.div
-            initial={{ x: "-100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "-100%" }}
-            className="bg-secondary-3 text-secondary-2 text-xl px-5 py-2 left-0  fixed top-28 z-50"
-          >
-            Added To Cart Successfully!
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }

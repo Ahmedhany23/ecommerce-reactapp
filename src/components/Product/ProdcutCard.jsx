@@ -23,7 +23,7 @@ export default function ProductCard({
   cartisAdded,
 }) {
   const [hidden, setHidden] = useState(false);
-  const {setCartAdded} = useAddToCartContext()
+  const {setCartAdded } = useAddToCartContext()
   const [isAddedWishList, setIsAddedWishList] = useState(false);
   const dispatch = useDispatch();
 
@@ -139,6 +139,7 @@ export default function ProductCard({
               {cartisAdded ? "Added To Cart" : "Add To Cart"}
             </motion.button>
           )}
+         
         </AnimatePresence>
       </div>
       <div className="mt-4 flex flex-col gap-2">
@@ -167,7 +168,7 @@ export default function ProductCard({
           </div>
         )}
       </div>
-     
+  
     </div>
     
   );

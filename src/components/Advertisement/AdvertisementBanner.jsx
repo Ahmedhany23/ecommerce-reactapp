@@ -30,12 +30,9 @@ export default function AdvertisementBanner({type = 1 , deadline}) {
 
   return (
     <section className="relative container mx-auto ">
-      <motion.div initial={{y:-2000}} animate={{y:0}} transition={{duration:0.6}} className="pt-[40px] pb-[140px] flex justify-between">
-        <CategroiesList />
+      <motion.div initial={{opacity:0.3}} animate={{opacity:1}} transition={{duration:0.6}} className="pt-[40px] pb-[140px] flex justify-between">
         <Carousel/>
       </motion.div>
-      {/* divider */}
-      <div className=" hidden xl:block absolute h-[384px] top-0 left-64 w-1  bg-black/302 border-l-[0.5px]"/>
     </section>
   );
 }

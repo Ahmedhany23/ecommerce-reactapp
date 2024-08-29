@@ -29,3 +29,22 @@ export const fetchCart = async () => {
   const { data } = await api("/cart");
   return data;
 };
+
+export const fetchFilterdProducts = async ({ categories, priceRange  }) => {
+  const { data } = await api("/product");
+
+  let filteredData = data;
+
+  if (categories && categories.length > 0) {
+    filteredData = filteredData.filter((item) =>
+      categories.includes(item.category.toLowerCase())
+    );
+  }
+
+  if (priceRange ) {
+    const {min,max} = priceRange;
+    filteredData = filteredData.filter((item) => item.price >= min && item.price <= max);
+  }
+
+  return filteredData;
+};
