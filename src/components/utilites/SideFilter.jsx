@@ -7,7 +7,7 @@ export default function SideFilter() {
   const { setfilter } = useFilterContext();
   // State for price range
   const [priceRange, setPriceRange] = useState({ min: '', max: '' });
-  const [filterMenu, setFilterMenu] = useState(true)
+  const [filterMenu, setFilterMenu] = useState(false)
   const handleCategoryChange = (event) => {
     const { value, checked } = event.target;
     setfilter((prev) => {
