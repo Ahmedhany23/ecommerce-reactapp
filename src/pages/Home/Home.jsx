@@ -11,11 +11,19 @@ import ArrowToTop from "../../components/utilites/ArrowToTop";
 import { useAddToCartContext } from "../../context/AddedToCart";
 import { motion, AnimatePresence } from "framer-motion";
 
-const deadline = "October , 23 2024";
+// Generate dynamic deadline 30 days from now
+const generateDeadline = () => {
+  const futureDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
+  const month = futureDate.toLocaleString("en-US", { month: "long" });
+  const day = futureDate.getDate();
+  const year = futureDate.getFullYear();
+  return `${month} , ${day} ${year}`;
+};
 
 export default function HomePage() {
   const { data, isLoading } = useProducts();
   const CartData = useSelector((state) => state.cart.selectedProducts);
+  const deadline = generateDeadline();
 
   return (
     <>
